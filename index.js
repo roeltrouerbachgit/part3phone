@@ -29,7 +29,7 @@ app.get('/', (request, response) => {
     response.send('<h1>Hello there</h1>')
 })
 
-app.get('/info', (request, response) => {
+app.get('/info', (request, response, next) => {
     const date = new Date()
 
     Person.collection.countDocuments({})
@@ -115,7 +115,7 @@ app.post('/api/persons', (request, response, next) => {
 
 })
 
-app.put('/api/persons/:id', (request, response) => {
+app.put('/api/persons/:id', (request, response, next) => {
     const { name, number } = request.body
 
     if (!number || !name) {
